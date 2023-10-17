@@ -1,0 +1,11 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.portWin": "COM6",
+  "idf.flashType": "UART",
+  "files.associations": {
+    "stdio.h": "c",
+    "sdkconfig.h": "c",
+    "inttypes.h": "c",
+    "esp_flash.h": "c"
+  }
+}
