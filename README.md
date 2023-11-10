@@ -1,1 +1,0 @@
-# ESP32-Code-Snippet_ESP-IDF-C
