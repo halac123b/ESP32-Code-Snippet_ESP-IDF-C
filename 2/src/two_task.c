@@ -47,7 +47,7 @@ void button(void* parameter) {
 void app_main() {
     printf("Hello world!");
 
-    // Start 2 task cùng 1 lúc
+    // Start 2 task cùng 1 lúc, task chạy liên tục có priority thấp hơn (1), task event-based ưu tiên cao (2)
     xTaskCreate(printMssv, "printMssv", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
     xTaskCreate(button, "button", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
 }

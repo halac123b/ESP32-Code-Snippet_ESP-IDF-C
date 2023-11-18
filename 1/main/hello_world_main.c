@@ -44,7 +44,7 @@ void app_main(void)
     // Đếm ngược từ 10 về 1
     for (int i = 10; i >= 0; i--) {
         printf("Restarting in %d seconds...\n", i);
-        // Hàm delay của FreeRTOS
+        // Đưa process này vế state Block và trả control về cho OS, hết delay thì lấy lại control và chạy tiếp
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
     printf("Restarting now.\n");

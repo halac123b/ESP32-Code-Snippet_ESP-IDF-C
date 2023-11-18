@@ -5,5 +5,6 @@ Code snippets for developing Embedded System with ESP-32 board
 <ol>
   <li>Hello world</li>
   <li>Two simple task</li>
+  <li>Connect to Wifi</li>
 </ol>
 
