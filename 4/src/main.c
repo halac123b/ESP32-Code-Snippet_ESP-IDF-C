@@ -14,8 +14,8 @@
 #include "mqtt_client.h" //provides important functions to connect with MQTT
 
 // Wifi name and password
-const char *ssid = "C6.13";
-const char *pass = "passla123456";
+const char *ssid = "Honda";
+const char *pass = "honda123";
 
 int retry_num = 0;
 
@@ -115,7 +115,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
   }
   else if(event->event_id == MQTT_EVENT_DATA){  // Khi có data được gửi đến
     ESP_LOGI(TAG, "MQTT_EVENT_DATA");
-    printf("MQTT_EVENT_DATA");
+    printf("Received topic=%.*s, data=%.*s\n", event->topic_len, event->topic, event->data_len, event->data);
   }
   else if(event->event_id == MQTT_EVENT_ERROR){ //when any error
     ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
@@ -136,7 +136,7 @@ static void mqtt_app_start(){
     .credentials = {
       .username = "halac123b",  // your Adafruit username
       .authentication = {
-        .password = "aio_WMTr80mbHQKeySxMeffqT3jniaIU" // your Adafruit password
+        .password = "aio_tFpj54bK3UXb0kLL4ggXe7P2q8wB" // your Adafruit password
       }
     }
   };
@@ -145,9 +145,14 @@ static void mqtt_app_start(){
   esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL); // Register with event handler
   esp_mqtt_client_start(client); //starting the process
 
+
+  // Subcribe to a specific feed, when receive data, the event MQTT_EVENT_DATA will trigger
+  // Only need to call this function once, after subcribe success, trigger event MQTT_EVENT_SUBSCRIBED
+  esp_mqtt_client_subscribe(client, "halac123b/feeds/Humid", 0);
   while (1) {
-        esp_mqtt_client_publish(client, "halac123b/feeds/Humid", "50", 0, 1, 0);
-        vTaskDelay(5000 / portTICK_PERIOD_MS);
+      // Publish to a specific feed
+      esp_mqtt_client_publish(client, "halac123b/feeds/Humid", "50", 0, 1, 0);
+      vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
 
