@@ -7,5 +7,6 @@ Code snippets for developing Embedded System with ESP-32 board
   <li>Two simple task</li>
   <li>Connect to Wifi</li>
   <li>Pub-sub to Adafruit broker via MQTT</li>
+  <li>Transmit and Receive data via UART pin</li>
 </ol>
 
